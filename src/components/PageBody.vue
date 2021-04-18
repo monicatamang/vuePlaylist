@@ -6,7 +6,8 @@
         </article>
         <article>
             <h1>Playlist</h1>
-            <play-list :title="selectedSongTitle" :artist="selectedSongArtist"></play-list>
+            <play-list v-for="selectedSong in playListSongs" :key="selectedSong.id" :playListSong="selectedSong"></play-list>
+            <play-list></play-list>
         </article>
     </section>
 </template>
@@ -23,18 +24,22 @@
         },
         methods: {
             moveSongCard: function(data) {
-                console.log(data.title);
-                console.log(data.artist);
                 document.getElementById(`song${data.id}`).remove();
-                this.selectedSongTitle = data.title;
-                this.selectedSongArtist = data.artist;
-                console.log(this.songSelection);
-            }
+                
+                this.playListSongs.push(this.selectedSong);
+                this.songTitle = data.title;
+                this.songArtist = data.artist;
+                this.selectedSong.id = data.id;
+            },
         },
-        data() {
+        data: function() {
             return {
-                selectedSongTitle: undefined,
-                selectedSongArtist: undefined,
+                playListSongs: [],
+                selectedSong: {
+                    id: undefined,
+                    title: "",
+                    artist: ""
+                },
                 songList: [
                     {
                         id: 1,
