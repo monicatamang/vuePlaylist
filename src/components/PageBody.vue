@@ -2,11 +2,11 @@
     <section>
         <article>
             <h1>Song List</h1>
-            <song-list @songCardClicked="moveSongCard" v-for="song in songList" :key="song.id" :songObject="song" :id="`song${song.id}`"></song-list>
+            <song-list @songCardClicked="moveSongCard" v-for="song in songList" :key="song.id" :songObject="song"></song-list>
         </article>
         <article>
             <h1>Playlist</h1>
-            <play-list></play-list>
+            <play-list :title="selectedSongTitle" :artist="selectedSongArtist"></play-list>
         </article>
     </section>
 </template>
@@ -18,18 +18,23 @@
     export default {
         name: "page-body",
         components: {
+            SongList,
             PlayList,
-            SongList
         },
         methods: {
             moveSongCard: function(data) {
                 console.log(data.title);
                 console.log(data.artist);
                 document.getElementById(`song${data.id}`).remove();
+                this.selectedSongTitle = data.title;
+                this.selectedSongArtist = data.artist;
+                console.log(this.songSelection);
             }
         },
         data() {
             return {
+                selectedSongTitle: undefined,
+                selectedSongArtist: undefined,
                 songList: [
                     {
                         id: 1,
@@ -43,7 +48,7 @@
                     },
                     {
                         id: 3,
-                        title: `The Bad Ones`,
+                        title: `Bad Ones`,
                         artist: `Tate McRae`
                     },
                     {
