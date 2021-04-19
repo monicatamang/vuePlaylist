@@ -1,7 +1,6 @@
 <template>
-
     <!-- Creating an event listener for when a song card is clicked from the song list --> 
-    <!-- Added an id to each song card using the id from the props -->
+    <!-- Adding an id to each song card using the id from the props -->
     <div @click="notifyParent" :id="`song${songObject.id}`">
         <!-- Using the props locally as variables  -->
         <p>{{ songObject.title }}</p>
@@ -10,18 +9,16 @@
 </template>
 
 <script>
-
     // Exporting the song list component to be used in the body component
     export default {
         name: "song-list",
 
-        // Declaring props to send the id, title and artist as an object from the body component
+        // Declaring props to send the song from the song list array
         props: {
             songObject: Object,
         },
 
         methods: {
-
             // Creating a function that calls the this.$emit function which creates the songCardClicked event and sends the songObject to the body component
             notifyParent: function() {
                 this.$emit("songCardClicked", this.songObject);
@@ -34,12 +31,28 @@
     div {
         display: grid;
         place-items: center;
-        box-shadow: 1px 1px 5px lightgrey;
-        width: 100%;
+        row-gap: 20px;
+        box-shadow: 1px 1px 5px black;
+        width: 50%;
+        padding: 10%;
         cursor: pointer;
+    }
+
+    p {
+        font-size: 1.3rem;
+        font-weight: bold;
+    }
+
+    h4 {
+        font-size: 1rem;
+        font-weight: 300;
     }
 
     div:active {
         box-shadow: none;
+    }
+
+    div:hover {
+        background: slateblue;
     }
 </style>

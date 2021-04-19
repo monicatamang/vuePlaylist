@@ -1,11 +1,14 @@
 <template>
   <div id="app">
     <page-body></page-body>
+
+    <!-- Added fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400&display=swap" rel="stylesheet">
   </div>
 </template>
 
 <script>
-
 // Importing the body component into the home page
 import PageBody from "./components/PageBody.vue";
 
@@ -13,18 +16,23 @@ import PageBody from "./components/PageBody.vue";
 export default {
   name: 'App',
   components: {
-    PageBody,
+    PageBody
   }
 }
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Rubik', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin: 60px 0px;
+  background: #222222;
+  color: white;
+}
+
+* {
+  margin: 0;
+  padding: 0;
 }
 </style>
