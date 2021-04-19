@@ -1,6 +1,7 @@
 <template>
 
-    <!-- Creating an event listener and added an id to each song card -->
+    <!-- Creating an event listener for when a song card is clicked from the song list --> 
+    <!-- Added an id to each song card using the id from the props -->
     <div @click="notifyParent" :id="`song${songObject.id}`">
         <!-- Using the props locally as variables  -->
         <p>{{ songObject.title }}</p>
