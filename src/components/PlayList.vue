@@ -1,6 +1,6 @@
 <template>
     <!-- Creating an event listener for when a song card from the playlist has been clicked -->
-    <!-- Adding an id to each playlist song card using the id from the props -->
+    <!-- Binding an id to each song card in the playlist -->
     <div @click="notifyParent" :id="`playListSong${playListObject.id}`">
         <!-- Using the props locally as variables  -->
         <p>{{ playListObject.title }}</p>
@@ -13,7 +13,7 @@
     export default {
         name: "play-list",
 
-        // Declaring props to the send the song from the playlist array
+        // Declaring props so that the playlist component knows what data to expect and the body component can pass the songs from playlist array to the play list component
         props: {
             playListObject: Object
         },

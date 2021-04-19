@@ -3,14 +3,14 @@
         <article>
             <h1>Song List</h1>
             <!-- Creating a for-loop that for every object in the song list array, render each div tag with the song's title and artist inside it -->
-            <!-- Passing the props as an attribute so it can be used in the song list component as variables -->
+            <!-- Binding the props as an attribute so it can be used in the song list component as variables -->
             <!-- Adding the songCardClicked event as an attribute which calls the addToPlayList function when a song card from the song list is clicked -->
             <song-list @songCardClicked="addToPlayList" v-for="song in userSongList" :key="song.id" :songObject="song"></song-list>
         </article>
 
         <article>
             <h1>Playlist</h1>
-            <!-- Passing the props as an attribute so it can be used as variables in the playlist component -->
+            <!-- Binding the props as an attribute so it can be used as variables in the playlist component -->
             <!-- Creating a for-loop that for every object in the playlist array, render each div tag with the song's title and artist inside it -->
             <!-- Adding the playListSongClicked event as an attribute which calls the addToSongList function when a song card from the playlist is clicked -->
             <play-list @playListSongClicked="addToSongList" v-for="selectedSong in userPlayList" :key="selectedSong.id" :playListObject="selectedSong"></play-list>
@@ -32,7 +32,7 @@
         },
 
         methods: {
-            // When a song card is clicked from the song list, the moveSongCard function is called and receives the object that was passed from the song list component
+            // When a song card is clicked from the song list, the addToPlayList function is called and receives the object that was passed from the song list component
             addToPlayList: function(data) {
 
                 // Removing the selected song card from the song list
@@ -48,14 +48,14 @@
                 )
             },
 
-            // When a song card is clicked from the playlist, the addSongCard function is called and receives the object that was passed from the playlist component
+            // When a song card is clicked from the playlist, the addToSongList function is called and receives the object that was passed from the playlist component
             addToSongList: function(data) {
 
                 // Removing the selected song card from the playlist
                 document.getElementById(`playListSong${data.id}`).remove();
 
                 // Creating an object with the title and artist of the song that was removed from the playlist and adding it to the song list array
-                // Modifing the id each time the user clicks on the song card from the playlist to avoid having duplicate keys
+                // Modifing the id each time the user clicks on the song card from the playlist to avoid having duplicate ids/keys
                 this.userSongList.push(
                     {
                         id: `${data.id}.1`,
