@@ -5,8 +5,11 @@
 </template>
 
 <script>
+
+// Importing the body component into the home page
 import PageBody from "./components/PageBody.vue";
 
+// Registering the body component
 export default {
   name: 'App',
   components: {

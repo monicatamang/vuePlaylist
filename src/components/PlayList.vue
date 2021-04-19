@@ -1,20 +1,20 @@
 <template>
     <div>
-        <p>{{ playListSong.title }}</p>
-        <h4>{{ playListSong.artist }}</h4>
+        <!-- Using the props locally as variables  -->
+        <p>{{ playListObject.title }}</p>
+        <h4>{{ playListObject.artist }}</h4>
     </div>
 </template>
 
 <script>
+
+    // Exporting the playlist component to be used in the body component
     export default {
         name: "play-list",
+
+        // Declaring props to the send the title and artist of the song that was removed from the song list, as an object
         props: {
-            playListSong: Object,
-        },
-        methods: {
-            notifyParent: function() {
-                this.$emit("playListSongClicked", this.playListSong);
-            }
+            playListObject: Object
         },
     }
 </script>

@@ -2,126 +2,61 @@
     <section>
         <article>
             <h1>Song List</h1>
+
+            <!-- Creating a for-loop that will render each div tag with the title and artist of the song inside it -->
+            <!-- Passing the props as an attribute so it can be used in the song list component as variables -->
+            <!-- Adding the songCardClicked event as an attribute which calls the moveSongCard function when a song card is clicked -->
             <song-list @songCardClicked="moveSongCard" v-for="song in songList" :key="song.id" :songObject="song"></song-list>
         </article>
         <article>
             <h1>Playlist</h1>
-            <play-list v-for="selectedSong in playListSongs" :key="selectedSong.id" :playListSong="selectedSong"></play-list>
+
+            <!-- Passing the props as an attribute so it can be used as variables in the song list component -->
+            <!-- Creating a for-loop that will render each div tag with the title and artist of the selected song inside it -->
+            <play-list v-for="selectedSong in playList" :key="selectedSong.title" :playListObject="selectedSong"></play-list>
         </article>
     </section>
 </template>
 
 <script>
+
+    // Importing the song list and playlist components into the body component
     import SongList from "./SongList.vue";
     import PlayList from "./PlayList.vue";
 
+    // Registering the song list and playlist components
     export default {
         name: "page-body",
         components: {
             SongList,
             PlayList,
         },
-        methods: {
-            moveSongCard: function(data) {
-                document.getElementById(`song${data.id}`).remove();
-                console.log(data.id);
 
-                if(data.id === 1) {
-                    this.selectedSong1.title = data.title;
-                    this.selectedSong1.artist = data.artist;
-                    this.playListSongs.push(this.selectedSong1);
-                } if(data.id === 2) {
-                    this.selectedSong2.title = data.title;
-                    this.selectedSong2.artist = data.artist;
-                    this.playListSongs.push(this.selectedSong2);
-                } if(data.id === 3) {
-                    this.selectedSong3.title = data.title;
-                    this.selectedSong3.artist = data.artist;
-                    this.playListSongs.push(this.selectedSong3);
-                } if(data.id === 4) {
-                    this.selectedSong4.title = data.title;
-                    this.selectedSong4.artist = data.artist;
-                    this.playListSongs.push(this.selectedSong4);
-                } if(data.id === 5) {
-                    this.selectedSong5.title = data.title;
-                    this.selectedSong5.artist = data.artist;
-                    this.playListSongs.push(this.selectedSong5);
-                } if(data.id === 6) {
-                    this.selectedSong6.title = data.title;
-                    this.selectedSong6.artist = data.artist;
-                    this.playListSongs.push(this.selectedSong6);
-                } if(data.id === 7) {
-                    this.selectedSong7.title = data.title;
-                    this.selectedSong7.artist = data.artist;
-                    this.playListSongs.push(this.selectedSong7);
-                } if(data.id === 8) {
-                    this.selectedSong8.title = data.title;
-                    this.selectedSong8.artist = data.artist;
-                    this.playListSongs.push(this.selectedSong8);
-                } if(data.id === 9) {
-                    this.selectedSong9.title = data.title;
-                    this.selectedSong9.artist = data.artist;
-                    this.playListSongs.push(this.selectedSong9);
-                } if(data.id === 10) {
-                    this.selectedSong10.title = data.title;
-                    this.selectedSong10.artist = data.artist;
-                    this.playListSongs.push(this.selectedSong10);
-                }
+        methods: {
+
+            // When a song card is clicked, the moveSongCard function is called and receives the object that was passed from the song list component
+            moveSongCard: function(data) {
+
+                // Removing the selected song card from the song list
+                document.getElementById(`song${data.id}`).remove();
+
+                // Creating an object with the title and artist of the song that was removed and adding it to the playList array
+                this.playList.push(
+                    {
+                        title: `${data.title}`,
+                        artist: `${data.artist}`
+                    }
+                )
             },
         },
+
         data: function() {
             return {
-                playListSongs: [],
-                selectedSong1: {
-                    id: 11,
-                    title: "",
-                    artist: ""
-                },
-                selectedSong2: {
-                    id: 12,
-                    title: "",
-                    artist: ""
-                },
-                selectedSong3: {
-                    id: 13,
-                    title: "",
-                    artist: ""
-                },
-                selectedSong4: {
-                    id: 14,
-                    title: "",
-                    artist: ""
-                },
-                selectedSong5: {
-                    id: 15,
-                    title: "",
-                    artist: ""
-                },
-                selectedSong6: {
-                    id: 16,
-                    title: "",
-                    artist: ""
-                },
-                selectedSong7: {
-                    id: 17,
-                    title: "",
-                    artist: ""
-                },
-                selectedSong8: {
-                    id: 18,
-                    title: "",
-                    artist: ""
-                },
-                selectedSong9: {
-                    id: 19,
-                    title: "",
-                    artist: ""
-                },
-                selectedSong10: {
-                    id: 20,
-                    title: "",
-                    artist: ""
-                },
+
+                // Creating an empty array so that it can be added with songs when the user clicks on a song card
+                playList: [],
+
+                // Creating an array of 10 songs as objects
                 songList: [
                     {
                         id: 1,
