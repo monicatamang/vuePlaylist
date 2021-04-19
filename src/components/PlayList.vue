@@ -11,11 +11,16 @@
         props: {
             playListSong: Object,
         },
+        methods: {
+            notifyParent: function() {
+                this.$emit("playListSongClicked", this.playListSong);
+            }
+        },
     }
 </script>
 
 <style scoped>
-    /* div {
+    div {
         display: grid;
         place-items: center;
         box-shadow: 1px 1px 5px lightgrey;
@@ -25,5 +30,5 @@
 
     div:active {
         box-shadow: none;
-    } */
+    }
 </style>

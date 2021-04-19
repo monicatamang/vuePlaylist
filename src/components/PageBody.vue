@@ -7,7 +7,6 @@
         <article>
             <h1>Playlist</h1>
             <play-list v-for="selectedSong in playListSongs" :key="selectedSong.id" :playListSong="selectedSong"></play-list>
-            <play-list></play-list>
         </article>
     </section>
 </template>
@@ -25,18 +24,101 @@
         methods: {
             moveSongCard: function(data) {
                 document.getElementById(`song${data.id}`).remove();
-                
-                this.playListSongs.push(this.selectedSong);
-                this.songTitle = data.title;
-                this.songArtist = data.artist;
-                this.selectedSong.id = data.id;
+                console.log(data.id);
+
+                if(data.id === 1) {
+                    this.selectedSong1.title = data.title;
+                    this.selectedSong1.artist = data.artist;
+                    this.playListSongs.push(this.selectedSong1);
+                } if(data.id === 2) {
+                    this.selectedSong2.title = data.title;
+                    this.selectedSong2.artist = data.artist;
+                    this.playListSongs.push(this.selectedSong2);
+                } if(data.id === 3) {
+                    this.selectedSong3.title = data.title;
+                    this.selectedSong3.artist = data.artist;
+                    this.playListSongs.push(this.selectedSong3);
+                } if(data.id === 4) {
+                    this.selectedSong4.title = data.title;
+                    this.selectedSong4.artist = data.artist;
+                    this.playListSongs.push(this.selectedSong4);
+                } if(data.id === 5) {
+                    this.selectedSong5.title = data.title;
+                    this.selectedSong5.artist = data.artist;
+                    this.playListSongs.push(this.selectedSong5);
+                } if(data.id === 6) {
+                    this.selectedSong6.title = data.title;
+                    this.selectedSong6.artist = data.artist;
+                    this.playListSongs.push(this.selectedSong6);
+                } if(data.id === 7) {
+                    this.selectedSong7.title = data.title;
+                    this.selectedSong7.artist = data.artist;
+                    this.playListSongs.push(this.selectedSong7);
+                } if(data.id === 8) {
+                    this.selectedSong8.title = data.title;
+                    this.selectedSong8.artist = data.artist;
+                    this.playListSongs.push(this.selectedSong8);
+                } if(data.id === 9) {
+                    this.selectedSong9.title = data.title;
+                    this.selectedSong9.artist = data.artist;
+                    this.playListSongs.push(this.selectedSong9);
+                } if(data.id === 10) {
+                    this.selectedSong10.title = data.title;
+                    this.selectedSong10.artist = data.artist;
+                    this.playListSongs.push(this.selectedSong10);
+                }
             },
         },
         data: function() {
             return {
                 playListSongs: [],
-                selectedSong: {
-                    id: undefined,
+                selectedSong1: {
+                    id: 11,
+                    title: "",
+                    artist: ""
+                },
+                selectedSong2: {
+                    id: 12,
+                    title: "",
+                    artist: ""
+                },
+                selectedSong3: {
+                    id: 13,
+                    title: "",
+                    artist: ""
+                },
+                selectedSong4: {
+                    id: 14,
+                    title: "",
+                    artist: ""
+                },
+                selectedSong5: {
+                    id: 15,
+                    title: "",
+                    artist: ""
+                },
+                selectedSong6: {
+                    id: 16,
+                    title: "",
+                    artist: ""
+                },
+                selectedSong7: {
+                    id: 17,
+                    title: "",
+                    artist: ""
+                },
+                selectedSong8: {
+                    id: 18,
+                    title: "",
+                    artist: ""
+                },
+                selectedSong9: {
+                    id: 19,
+                    title: "",
+                    artist: ""
+                },
+                selectedSong10: {
+                    id: 20,
                     title: "",
                     artist: ""
                 },
